@@ -1,7 +1,7 @@
 
 # hypr-dots
 
-My current Thinkpad Arch Linux setup with Hyprland. Adapted from [gasech/hyprland-dots](https://github.com/gasech/hyprland).
+My current Thinkpad Arch Linux setup with Hyprland. Adapted from [gasech/hyprland-dots](https://github.com/gasech/hyprland-dots).
 
 ### Screenshots
 ![](./assets/first_image.png)
