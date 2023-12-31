@@ -38,6 +38,9 @@ fi
 if [ -d "$HOME/.npm-global" ] ;
   then PATH="$HOME/.npm-global/bin:$PATH"
 fi
+if [ -d "$HOME/.config/emacs/bin/" ] ;
+  then PATH="$HOME/.config/emacs/bin/:$PATH"
+fi
 
 ### CHANGE TITLE OF TERMINALS
 case ${TERM} in

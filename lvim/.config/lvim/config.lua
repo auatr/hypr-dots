@@ -4,7 +4,23 @@
 -- Discord: https://discord.com/invite/Xb9B4Ny
 lvim.plugins = {
   {"folke/tokyonight.nvim"},
-  {"vimwiki/vimwiki"}
+  {"vimwiki/vimwiki"},
+  {"nvim-neorg/neorg", ft = "norg", cmd = 'Neorg', priority = 30, config = function ()
+    require('neorg').setup {
+      load = {
+        ['core.defaults'] = {},
+        ['core.concealer'] = {},
+        ['core.dirman'] = {
+          config = {
+            workspaces = {
+              notes = "~/notes/"
+            }
+          }
+        }
+      },
+    }
+  end},
+  {"jbyuki/nabla.nvim", ft = "norg"}
 }
 
 
@@ -13,6 +29,8 @@ require("tokyonight").setup({
   transparent = true
 })
 lvim.colorscheme = "tokyonight"
+
+lvim.keys.normal_mode["<Space>m"] = require("nabla").popup()
 
 local keymap = vim.api.nvim_set_keymap
 
