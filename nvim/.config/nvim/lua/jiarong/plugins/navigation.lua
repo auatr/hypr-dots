@@ -13,26 +13,23 @@ return {
     ft = "netrw",
     opts = {
       filesystem = {
-        hijack_netrw_behavior = "open_default"
+        hijack_netrw_behavior = "open_current"
       }
     },
+    config = function()
+      require'neo-tree'.setup{
+        filesystem = {
+          hijack_netrw_behavior = 'open_current'
+        }
+      }
+      if vim.bo.filetype == 'netrw' and vim.b.netrw_method == nil then
+        vim.defer_fn(function()
+          vim.cmd('enew | Neotree current dir=' .. vim.b.netrw_curdir)
+        end, 0)
+      end
+    end,
     keys = {
-      {
-        "<leader>fe",
-        function()
-          require("neo-tree.command").execute({ toggle = true})
-        end,
-        desc = "Explorer NeoTree (root dir)",
-      },
-      {
-        "<leader>fE",
-        function()
-          require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
-        end,
-        desc = "Explorer NeoTree (cwd)",
-      },
-      { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
-      { "<leader>E", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
+      { "<leader>e", function() require("neo-tree.command").execute({ toggle = true }) end, desc = "Explorer NeoTree (root dir)", remap = true },
     }
   },
   -- Telescope
@@ -70,6 +67,27 @@ return {
         padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
         winblend = 0,
       },
-    }
+    },
+    {
+      "ThePrimeagen/harpoon",
+      branch = "harpoon2",
+      config = function()
+        local harpoon = require("harpoon")
+
+        harpoon:setup()
+
+        vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end)
+        vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+        vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
+        vim.keymap.set("n", "<C-g>", function() harpoon:list():select(2) end)
+        vim.keymap.set("n", "<C-n>", function() harpoon:list():select(3) end)
+        vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end)
+
+        -- Toggle previous & next buffers stored within Harpoon list
+        vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
+        vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
+      end
+    },
   },
 }

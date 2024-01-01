@@ -31,6 +31,7 @@ return {
             { action = "Telescope live_grep",                                      desc = " Find text",       icon = " ", key = "g" },
             { action = "Lazy",                                                     desc = " Lazy",            icon = "󰒲 ", key = "l" },
             { action = "qa",                                                       desc = " Quit",            icon = " ", key = "q" },
+            { action = "Neotree dir=~/.config/nvim/lua/jiarong/",                  desc = " Config",          icon = " ", key = "c" }
           },
           footer = function()
             local stats = require("lazy").stats()
@@ -64,7 +65,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      style = "storm"
+      require("tokyonight").setup {style = "storm"}
       vim.cmd "colorscheme tokyonight"
     end,
   },

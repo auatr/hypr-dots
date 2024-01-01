@@ -3,7 +3,7 @@ require("lualine").setup {
     icons_enabled = true,
     theme = 'tokyonight',
     component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
     disabled_filetypes = {
       statusline = {"dashboard", "lazy", "neo-tree", "lazyterm", "mason", "notify"},
       winbar = {},
@@ -33,7 +33,6 @@ require("lualine").setup {
     lualine_y = {},
     lualine_z = {}
   },
-  tabline = {},
   winbar = {},
   inactive_winbar = {},
   extensions = {}

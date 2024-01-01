@@ -12,7 +12,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({{import = "jiarong.plugins"}, {import = "jiarong.plugins.lsp"}})
+
+require("lazy").setup ({{import = "jiarong.plugins"}, {import = "jiarong.plugins.lsp"}})
 
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
@@ -64,9 +65,4 @@ cmp.setup {
   },
 }
 
-local mappings = {
-  ["p"] = {"<cmd>Lazy<cr>", "Packages"},
-  ["f"] = {"<cmd>require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", "Telescope" },
-}
-require("which-key").register(mappings)
 

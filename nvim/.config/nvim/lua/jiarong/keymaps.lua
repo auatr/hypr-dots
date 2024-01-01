@@ -54,7 +54,8 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Keybindings
-keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts) -- Telescope Find Files
 keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts) -- Telescope live grep
-keymap("n", "<leader>p", "<cmd>Lazy", opts) -- Open Lazy
-keymap("n", "<leader>l", "<cmd>Mason", opts) -- Open Mason
+keymap("n", "<leader>p", "<cmd>Lazy<cr>", opts) -- Open Lazy
+keymap("n", "<leader>l", "<cmd>Mason<cr>", opts) -- Open Mason
+keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts) -- Telescope find files
+keymap("n", "<leader>c", "<cmd>cd ~/.config/nvim<cr>", opts) -- Switch to config directory
